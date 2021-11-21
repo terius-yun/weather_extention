@@ -18,13 +18,18 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.projectlombok:lombok:1.18.22'
-    implementation 'com.google.code.gson:gson:2.8.8'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
 
     //데이타베이스관련
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation("org.mariadb.jdbc:mariadb-java-client")
     implementation('com.h2database:h2')
+
+    // https://mvnrepository.com/artifact/org.json/json
+    //json
+    implementation 'org.json:json:20210307'
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.8'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

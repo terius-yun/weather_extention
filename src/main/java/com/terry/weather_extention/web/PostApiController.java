@@ -12,7 +12,7 @@ import java.io.IOException;
 @RestController
 public class PostApiController {
 
-    private CallWeather callWeather;
+    private CallWeather callWeather = new CallWeather();
 
     @CrossOrigin("*")
     @ResponseBody
