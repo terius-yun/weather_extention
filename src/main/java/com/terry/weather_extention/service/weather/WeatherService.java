@@ -3,7 +3,10 @@ package com.terry.weather_extention.service.weather;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.terry.weather_extention.domain.weather.WeathersRepository;
+import com.terry.weather_extention.web.dto.WeathersSaveDto;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -12,14 +15,16 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
+@RequiredArgsConstructor
 @Service
-@NoArgsConstructor
-public class CallWeather {
+public class WeatherService {
+        private final WeathersRepository weathersRepository;
 
         private static String token;
 
@@ -63,5 +68,8 @@ public class CallWeather {
 
             return result;
         }
+
+        @Transactional
+        public void save(WeathersSaveDto saveDto){weathersRepository.save(saveDto.toEntity());}
 
 }
